@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>로그인</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/icon/was.ico" />
+    <link rel="stylesheet" href="/styles/color.css" />
+    <link rel="stylesheet" href="/styles/font.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <form action="/member/login" method="post" class="main">
+      <div class="nav">
+        <a href="/" class="title bold-r">Check Mate</a>
+        <div class="frame">
+          <a href="/login.html" class="button-small">
+            <div class="bold-s">로그인/회원가입</div>
+          </a>
+        </div>
+      </div>
+      <div class="display-title-wrapper">
+        <div class="display-l">로그인</div>
+      </div>
+      <div class="input-frame">
+        <label for="input-email" class="input-info">
+          <div class="bold-s">이메일</div>
+          <input
+            type="email"
+            name="email"
+            id="input-email"
+            class="body-r"
+            placeholder="이메일을 입력해주세요"
+            required
+          />
+        </label>
+        <label for="input-password" class="input-info">
+          <div class="bold-s">비밀번호</div>
+          <input
+            type="password"
+            name="password"
+            id="input-password"
+            class="body-r"
+            placeholder="비밀번호를 입력해주세요"
+            required
+          />
+        </label>
+      </div>
+      <div class="input-frame">
+        <input type="submit" value="로그인" class="button-large bold-r" />
+        <p class="text">
+          <span class="body-s">아직 회원가입을 안하셨나요? </span>
+          <a href="/join.html" class="bold-s">회원가입하기</a>
+        </p>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>여행 체크리스트 작성</title>
+  <meta charset="utf-8"/>
+  <link rel="icon" href="/icon/was.ico"/>
+  <link rel="stylesheet" href="/styles/color.css"/>
+  <link rel="stylesheet" href="/styles/font.css"/>
+  <link rel="stylesheet" href="/styles/style.css"/>
+</head>
+<body>
+<div class="main">
+  <div class="nav">
+    <a href="/" class="title bold-r">Check Mate</a>
+    <div id="nav-member" class="frame bold-s">
+      <div id="display-nickname"></div>
+      <a href="/my-checklist.html" class="button-small">
+        <div>내 체크리스트</div>
+      </a>
+      <form
+              action="/member/logout"
+              method="post"
+              class="button-small"
+              onclick="this.submit();"
+      >
+        <div>로그아웃</div>
+      </form>
+    </div>
+  </div>
+  <form th:action="'/checklist/update/' + ${checklist.getId()}" method="post" class="post-form">
+    <div class="post-title display-l">여행 체크리스트 작성</div>
+    <label for="input-title" class="input-info" style="width: auto;">
+      <div class="bold-s">제목</div>
+      <input
+              type="text"
+              name="title"
+              id="input-title"
+              class="body-r"
+              placeholder="체크리스트의 제목을 입력하세요"
+              required
+              th:value="${checklist.getTitle()}"
+      />
+    </label>
+    <label for="checklist" class="input-info" style="width: auto; min-height: 200px">
+      <div class="bold-s">내용</div>
+      <div id="checklist" style="padding-bottom: 1rem;">
+        <!-- 체크리스트가 여기에 추가될 것입니다. -->
+      </div>
+      <div id="addBtn" class="button-small" style="margin-top: auto;">
+        <div>체크박스 추가</div>
+      </div>
+    </label>
+    <div style="display: flex; align-items: center;">
+      <div id="aiHelpBtn" class="button-small bold-s" style="margin-right: 10px;">
+        <div>AI 도움</div>
+      </div>
+      <input type="text" id="ai-input" placeholder="여행 장소 입력" class="body-r"/>
+      <div id="createBtn" class="button-small bold-s" style="margin-left: auto;">
+        <div>작성 완료</div>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+<script src="/scripts/update-checklist.js"></script>
+<script th:inline="javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    const checklistData = [[${checklist.getContent()}]];
+    const checklist = document.getElementById('checklist');
+
+    try {
+      const checklistItems = JSON.parse(checklistData);
+
+      checklistItems.forEach(item => {
+        const newItemContainer = document.createElement('div');
+        newItemContainer.classList.add('checklist-item-container');
+
+        const newItemCheckbox = document.createElement('input');
+        newItemCheckbox.type = 'checkbox';
+        newItemCheckbox.classList.add('checklist-item-checkbox');
+        newItemCheckbox.checked = item.checked;
+
+        const newItemInput = document.createElement('input');
+        newItemInput.type = 'text';
+        newItemInput.placeholder = '체크박스 내용 입력';
+        newItemInput.classList.add('checklist-item-input');
+        newItemInput.value = item.text;
+
+        const deleteButton = document.createElement('div');
+        deleteButton.textContent = '삭제';
+        deleteButton.classList.add('delete-button');
+
+        newItemContainer.appendChild(newItemCheckbox);
+        newItemContainer.appendChild(newItemInput);
+        newItemContainer.appendChild(deleteButton);
+
+        newItemContainer.addEventListener('mouseenter', function () {
+          deleteButton.style.display = 'inline-block';
+        });
+
+        newItemContainer.addEventListener('mouseleave', function () {
+          deleteButton.style.display = 'none';
+        });
+
+        deleteButton.addEventListener('click', function () {
+          newItemContainer.remove();
+        });
+
+        checklist.appendChild(newItemContainer);
+      });
+    } catch (error) {
+      console.error('Error parsing checklist data:', error);
+    }
+  });
+</script>
+</html>

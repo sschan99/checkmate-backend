@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Mate</title>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="/icon/was.ico"/>
+    <link rel="stylesheet" href="/styles/color.css"/>
+    <link rel="stylesheet" href="/styles/font.css"/>
+    <link rel="stylesheet" href="/styles/style.css"/>
+</head>
+<body>
+<div class="main">
+    <div class="nav">
+        <a href="/" class="title bold-r">Check Mate</a>
+        <div id="nav-guest" class="frame bold-s">
+            <a href="/login.html" class="button-small">
+                <div>로그인/회원가입</div>
+            </a>
+        </div>
+        <div id="nav-member" class="frame bold-s">
+            <div id="display-nickname"></div>
+            <a href="/my-checklist.html" class="button-small">
+                <div>내 체크리스트</div>
+            </a>
+            <form
+                    action="/member/logout"
+                    method="post"
+                    class="button-small"
+                    onclick="this.submit();"
+            >
+                <div>로그아웃</div>
+            </form>
+        </div>
+    </div>
+    <div class="hero">
+        <div class="noto-sans-r">여행 체크리스트 추천 서비스</div>
+        <div class="noto-sans-l">체크 메이트(Check Mate) 입니다.</div>
+    </div>
+    <div class="table-wrapper">
+        <div id="table-size" class="noto-sans-s">전체 글 0개</div>
+        <div id="post-table" class="table body-r">
+            <div class="table-head-wrapper">
+                <div class="line"></div>
+                <div class="table-head bold-s">
+                    <div class="table-title">제목</div>
+                    <div class="table-other">작성자</div>
+                    <div class="table-other">작성일자</div>
+                    <div class="table-other">조회수</div>
+                </div>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="pagination body-s">
+                <img src="/svg/chevron-left.svg"/>
+                <div class="current-page bold-s">1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <img src="/svg/chevron-right.svg"/>
+            </div>
+            <a href="/checklist-create.html" class="button-small">
+                <div>글쓰기</div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/scripts/index.js"></script>
+<script src="/scripts/checklist.js"></script>
+</html>

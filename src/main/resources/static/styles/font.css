@@ -1,0 +1,50 @@
+.display-l {
+  font-family: Pretendard;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.display-r {
+  font-family: Pretendard;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.bold-r {
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 100%;
+}
+.bold-s {
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 100%;
+}
+.body-r {
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.body-s {
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.noto-sans-l {
+  font-family: Noto Sans KR;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+}
+.noto-sans-r {
+  font-family: Noto Sans KR;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gray-100);
+}
+.noto-sans-s {
+  font-family: Noto Sans KR;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--gray-200);
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>여행 체크리스트 작성</title>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="/icon/was.ico"/>
+    <link rel="stylesheet" href="/styles/color.css"/>
+    <link rel="stylesheet" href="/styles/font.css"/>
+    <link rel="stylesheet" href="/styles/style.css"/>
+</head>
+<body>
+<div class="main">
+    <div class="nav">
+        <a href="/" class="title bold-r">Check Mate</a>
+        <div id="nav-member" class="frame bold-s">
+            <div id="display-nickname"></div>
+            <a href="/my-checklist.html" class="button-small">
+                <div>내 체크리스트</div>
+            </a>
+            <form
+                    action="/member/logout"
+                    method="post"
+                    class="button-small"
+                    onclick="this.submit();"
+            >
+                <div>로그아웃</div>
+            </form>
+        </div>
+    </div>
+    <form action="/checklist/create" method="post" class="post-form">
+        <div class="post-title display-l">여행 체크리스트 작성</div>
+        <label for="input-title" class="input-info" style="width: auto;">
+            <div class="bold-s">제목</div>
+            <input
+                    type="text"
+                    name="title"
+                    id="input-title"
+                    class="body-r"
+                    placeholder="체크리스트의 제목을 입력하세요"
+                    required
+            />
+        </label>
+        <label for="checklist" class="input-info" style="width: auto; min-height: 200px">
+            <div class="bold-s">내용</div>
+            <div id="checklist" style="padding-bottom: 1rem;">
+                <!-- 체크리스트가 여기에 추가될 것입니다. -->
+            </div>
+            <div id="addBtn" class="button-small" style="margin-top: auto;">
+                <div>체크박스 추가</div>
+            </div>
+        </label>
+        <div style="display: flex; align-items: center;">
+            <div id="aiHelpBtn" class="button-small bold-s" style="margin-right: 10px;">
+                <div>AI 도움</div>
+            </div>
+            <input type="text" id="ai-input" placeholder="여행 장소 입력" class="body-r"/>
+            <div id="createBtn" class="button-small bold-s" style="margin-left: auto;">
+                <div>작성 완료</div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src="/scripts/make-checklist.js"></script>
+</html>

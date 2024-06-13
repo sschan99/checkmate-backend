@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>회원가입</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/icon/was.ico" />
+    <link rel="stylesheet" href="/styles/color.css" />
+    <link rel="stylesheet" href="/styles/font.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <form action="/member/join" method="post" class="main">
+      <div class="nav">
+        <a href="/" class="title bold-r">Check Mate</a>
+        <div class="frame">
+          <a href="/login.html" class="button-small">
+            <div class="bold-s">로그인/회원가입</div>
+          </a>
+        </div>
+      </div>
+      <div class="display-title-wrapper">
+        <div id="display-title" class="display-l">회원가입</div>
+      </div>
+      <div class="input-frame">
+        <label for="input-email" class="input-info">
+          <div class="bold-s">이메일</div>
+          <input
+            type="email"
+            name="email"
+            id="input-email"
+            class="body-r"
+            placeholder="이메일을 입력해주세요"
+            required
+          />
+        </label>
+        <label for="input-name" class="input-info">
+          <div class="bold-s">이름</div>
+          <input
+            type="text"
+            name="name"
+            id="input-name"
+            class="body-r"
+            placeholder="이름을 입력해주세요"
+            required
+          />
+        </label>
+        <label for="input-password" class="input-info">
+          <div class="bold-s">비밀번호</div>
+          <input
+            type="password"
+            name="password"
+            id="input-password"
+            class="body-r"
+            placeholder="비밀번호를 입력해주세요"
+            required
+          />
+        </label>
+      </div>
+      <div class="input-frame">
+        <input type="submit" value="회원가입" class="button-large bold-r" />
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: checkmate
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    hikari:
+      maximum-pool-size: 4
+    url: jdbc:postgresql://localhost:5432/development
+    username: postgres
+    driver-class-name: org.postgresql.Driver

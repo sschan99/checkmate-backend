@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${checklist.getTitle()}">Check Mate</title>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="/icon/was.ico"/>
+    <link rel="stylesheet" href="/styles/color.css"/>
+    <link rel="stylesheet" href="/styles/font.css"/>
+    <link rel="stylesheet" href="/styles/style.css"/>
+</head>
+<body>
+<div class="main">
+    <div class="nav">
+        <a href="/" class="title bold-r">Check Mate</a>
+        <div id="nav-guest" class="frame bold-s">
+            <a href="/login.html" class="button-small">
+                <div>로그인/회원가입</div>
+            </a>
+        </div>
+        <div id="nav-member" class="frame bold-s">
+            <div id="display-nickname"></div>
+            <a href="/my-checklist.html" class="button-small">
+                <div>내 체크리스트</div>
+            </a>
+            <form
+                    action="/member/logout"
+                    method="post"
+                    class="button-small"
+                    onclick="this.submit();"
+            >
+                <div>로그아웃</div>
+            </form>
+        </div>
+    </div>
+    <div class="hero" style="width: 42.5rem">
+        <div class="noto-sans-l" th:text="${checklist.getTitle()}"></div>
+        <div class="noto-sans-r" th:text="'작성자: ' + ${checklist.getMember().getName()}"></div>
+        <div class="noto-sans-r" th:text="'조회수: ' + ${checklist.getViews()}"></div>
+    </div>
+    <label for="checklist" class="input-info" style="width: 45.5rem; min-height: 200px">
+        <div class="bold-s">내용</div>
+        <div id="checklist" style="padding-bottom: 1rem;">
+            <!-- 체크리스트가 여기에 추가될 것입니다. -->
+        </div>
+    </label>
+
+    <div style="display: flex; align-items: center; width: 47.5rem;">
+        <a th:href="'/checklist/update/' + ${checklist.getId()}" id="createBtn" class="button-small bold-s"
+           style="margin-left: auto;">
+            <div>수정하기</div>
+        </a>
+    </div>
+</div>
+</body>
+<script src="/scripts/index.js"></script>
+<script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const checklistData = [[${checklist.getContent()}]];
+        const checklist = document.getElementById('checklist');
+
+        try {
+            const checklistItems = JSON.parse(checklistData);
+
+            checklistItems.forEach(item => {
+                const newItemContainer = document.createElement('div');
+                newItemContainer.classList.add('checklist-item-container');
+                newItemContainer.style = "background-color: transparent;";
+
+                const newItemCheckbox = document.createElement('input');
+                newItemCheckbox.type = 'checkbox';
+                newItemCheckbox.classList.add('checklist-item-checkbox');
+                newItemCheckbox.checked = item.checked;
+                newItemCheckbox.disabled = true;
+
+                const newItemInput = document.createElement('input');
+                newItemInput.type = 'text';
+                newItemInput.placeholder = '체크박스 내용 입력';
+                newItemInput.classList.add('checklist-item-input');
+                newItemInput.value = item.text;
+                newItemInput.readOnly = true;
+
+                newItemContainer.appendChild(newItemCheckbox);
+                newItemContainer.appendChild(newItemInput);
+
+                checklist.appendChild(newItemContainer);
+            });
+        } catch (error) {
+            console.error('Error parsing checklist data:', error);
+        }
+    });
+</script>
+</html>
