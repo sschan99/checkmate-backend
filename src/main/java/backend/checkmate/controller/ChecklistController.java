@@ -83,6 +83,16 @@ public class ChecklistController {
         return "redirect:/checklist/" + id;
     }
 
+    @GetMapping("delete/{id}")
+    public String deleteChecklist(@PathVariable("id") Long id) {
+        Checklist checklist = checklistService.findById(id);
+        if (checklist == null) {
+            return "error"; // or handle error in a different way
+        }
+        checklistService.delete(checklist);
+        return "redirect:/";
+    }
+
     @PostMapping("create")
     public String create(@CookieValue("sessionId") Optional<String> sessionId, @RequestBody CreateChecklistForm form) {
         Gson gson = new Gson();

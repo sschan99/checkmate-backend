@@ -44,10 +44,14 @@
         </div>
     </label>
 
-    <div style="display: flex; align-items: center; width: 47.5rem;">
-        <a th:href="'/checklist/update/' + ${checklist.getId()}" id="createBtn" class="button-small bold-s"
+    <div id="updateDeleteBtnContainer" style="display: none; align-items: center; width: 47.5rem;">
+        <a th:href="'/checklist/update/' + ${checklist.getId()}" class="button-small bold-s"
            style="margin-left: auto;">
             <div>수정하기</div>
+        </a>
+        <a th:href="'/checklist/delete/' + ${checklist.getId()}" class="button-small bold-s"
+           style="margin-left: 2rem;">
+            <div>삭제하기</div>
         </a>
     </div>
 </div>
@@ -57,6 +61,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         const checklistData = [[${checklist.getContent()}]];
         const checklist = document.getElementById('checklist');
+        const updateDeleteBtnContainer = document.getElementById('updateDeleteBtnContainer');
 
         try {
             const checklistItems = JSON.parse(checklistData);
@@ -86,6 +91,26 @@
             });
         } catch (error) {
             console.error('Error parsing checklist data:', error);
+        }
+
+        try {
+            fetch("/member/check-login")
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error("로그인 상태를 확인하는 중에 오류 발생");
+                })
+                .then((data) => {
+                    if (data.name === [[${checklist.getMember().getName()}]]) {
+                        updateDeleteBtnContainer.style.display = "flex";
+                    }
+                })
+                .catch((error) => {
+                    console.error("오류 발생:", error);
+                });
+        } catch (error) {
+            console.error('Error check-login:', error);
         }
     });
 </script>

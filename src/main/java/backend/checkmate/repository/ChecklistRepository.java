@@ -16,4 +16,5 @@ public interface ChecklistRepository {
 
     List<Checklist> findAllByMemberOrderByCreatedAtDesc(Member member);
 
+    void delete(Checklist checklist);
 }

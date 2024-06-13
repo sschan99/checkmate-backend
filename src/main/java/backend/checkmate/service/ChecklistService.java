@@ -42,4 +42,8 @@ public class ChecklistService {
         Optional<Checklist> checklist = checklistRepository.findById(id);
         return checklist.orElse(null);
     }
+
+    public void delete(Checklist checklist) {
+        checklistRepository.delete(checklist);
+    }
 }
