@@ -51,16 +51,48 @@
       </div>
     </label>
     <div style="display: flex; align-items: center;">
-      <div id="aiHelpBtn" class="button-small bold-s" style="margin-right: 10px;">
+      <div id="aiHelpBtn" class="button-small bold-s">
         <div>AI 도움</div>
       </div>
-      <input type="text" id="ai-input" placeholder="여행 장소 입력" class="body-r"/>
       <div id="createBtn" class="button-small bold-s" style="margin-left: auto;">
         <div>작성 완료</div>
       </div>
     </div>
   </form>
 </div>
+
+
+<!-- Modal 창 -->
+<div id="aiModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>당신의 여행 스타일, 관심사, 예산을 기반으로 맞춤형 체크리스트를 생성해드립니다.</h2>
+    <br>
+    <h3>아래 내용을 3개 이상 채워주세요.</h3>
+    <form id="aiForm">
+      <label>1. 여행 스타일:</label>
+      <input type="text" id="travelStyle" placeholder="예: 모험, 휴양, 문화 탐방, 가족 여행 등"/><br/>
+      <label>2. 주요 관심사:</label>
+      <input type="text" id="interests" placeholder="예: 역사, 자연, 음식, 쇼핑, 예술, 스포츠 등"/><br/>
+      <label>3. 여행 예산:</label>
+      <input type="text" id="budget" placeholder="예: 저예산, 중간, 고급"/><br/>
+      <label>4. 여행 기간:</label>
+      <input type="text" id="duration" placeholder="예: 3일, 1주일, 2주일 등"/><br/>
+      <label>5. 방문할 장소:</label>
+      <input type="text" id="place" placeholder="예: 파리, 뉴욕, 도쿄 등"/><br/>
+      <label>6. 선호하는 교통 수단:</label>
+      <input type="text" id="transportation" placeholder="예: 도보, 자전거, 자동차, 대중교통 등"/><br/>
+      <label>7. 숙소 유형:</label>
+      <input type="text" id="accommodation" placeholder="예: 호텔, 호스텔, 에어비앤비 등"/><br/>
+      <label>8. 여행 동반자:</label>
+      <input type="text" id="companions" placeholder="예: 혼자, 친구, 가족, 연인 등"/><br/>
+      <label>9. 특별히 필요한 항목이나 서비스:</label>
+      <input type="text" id="specialNeeds" placeholder="예: 휠체어 접근성, 유아용품, 반려동물 친화적 등"/><br/>
+      <button type="button" id="generateBtn" class="button-large" style="margin: auto;">생성하기</button>
+    </form>
+  </div>
+</div>
+
 </body>
 <script src="/scripts/update-checklist.js"></script>
 <script th:inline="javascript">
